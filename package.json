@@ -1,0 +1,22 @@
+{
+  "name": "firebase-tester",
+  "version": "1.0.0",
+  "description": "Firebase service tester application",
+  "author": "Bryan Tan",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "firebase": "^7.2.3",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/vuetify": "^1.0.0"
+  }
+}
