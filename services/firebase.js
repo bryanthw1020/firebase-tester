@@ -17,5 +17,6 @@ if (!firebase.apps.length) {
 }
 
 export const GoogleProvider = new firebase.auth.GoogleAuthProvider()
+export const FacebookProvider = new firebase.auth.FacebookAuthProvider();
 export const auth = firebase.auth();
 export default firebase;
