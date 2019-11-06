@@ -54,6 +54,35 @@
           </v-card-actions>
         </v-card>
       </v-col>
+      <v-col>
+        <v-card class="mb-5">
+          <v-card-title>Anonymous</v-card-title>
+          <v-card-subtitle>Login as anonymous user.</v-card-subtitle>
+
+          <div>
+            <v-card-text>
+              <p class="subheading">Result:</p>
+              <v-textarea
+                label="Error Message"
+                :value="anonymousAuth.errorMessage"
+                outlined
+                disabled
+              />
+              <v-textarea label="Returned Token" :value="anonymousAuth.token" outlined disabled />
+            </v-card-text>
+          </div>
+
+          <v-card-actions>
+            <v-btn
+              color="primary"
+              :loading="anonymousAuth.loading"
+              :disabled="anonymousAuth.loading"
+              depressed
+              @click.prevent="submitAnonymousAuth"
+            >Login</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
     </v-row>
 
     <v-row>
@@ -161,6 +190,11 @@ export default {
         loading: false,
         errorMessage: null,
         token: null
+      },
+      anonymousAuth: {
+        loading: false,
+        errorMessage: null,
+        token: null
       }
     };
   },
@@ -220,6 +254,17 @@ export default {
         this.facebookAuth.errorMessage = err.message || null;
       } finally {
         this.facebookAuth.loading = false;
+      }
+    },
+    async submitAnonymousAuth() {
+      try {
+        this.anonymousAuth.loading = true;
+        let creds = await auth.signInAnonymously();
+        this.anonymousAuth.token = await creds.user.getIdToken();
+      } catch (err) {
+        this.anonymousAuth.errorMessage = err.message || null;
+      } finally {
+        this.anonymousAuth.loading = false;
       }
     },
     async getVerificationCode() {
