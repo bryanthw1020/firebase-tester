@@ -3,7 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   mode: 'spa',
   server: {
-    port: 8000
+    port: 8020
   },
   /*
   ** Headers of the page
